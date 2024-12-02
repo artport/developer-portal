@@ -1,0 +1,77 @@
+{
+    "$schema" : "https://mintlify.com/schema.json",
+    "name"    : "Developer Portal",
+    "logo"    : {
+        "dark"  : "/assets/banner-dark.svg",
+        "light" : "/assets/banner-light.svg"
+    },
+    "favicon" : "/assets/logo.svg",
+    "colors" : {
+        "primary" : "#0D9373",
+        "light"   : "#07C983",
+        "dark"    : "#0D9373",
+        "anchors" : {
+            "from" : "#0D9373",
+            "to"   : "#07C983"
+        }
+    },
+    "codeBlock" : {
+        "mode" : "auto"
+    },
+    "navigation" : [
+        {
+            "group" : "Get Started",
+            "pages" : [
+                "guide/getting-started/introduction",
+                "guide/getting-started/updates"
+            ]
+        },
+        {
+            "group" : "Concepts",
+            "pages" : [
+                "guide/concepts/authentication",
+                "guide/concepts/rate-limiting"
+            ]
+        },
+        {
+            "group" : "Libraries",
+            "pages" : [
+                "guide/libraries/introduction"
+            ]
+        },
+        {
+            "group" : "API Reference",
+            "pages" : [
+                {
+                    "group": "Addresses",
+                    "pages": [
+                        "guide/api/addresses/get",
+                        "guide/api/addresses/create",
+                        "guide/api/addresses/update",
+                        "guide/api/addresses/delete",
+                        "guide/api/addresses/verify"
+                    ]
+                },
+                {
+                    "group": "Schemas",
+                    "pages": [
+                        "guide/api/schemas/country"
+                    ]
+                }
+            ]
+        }
+    ],
+    "api" : {
+        "baseUrl" : "https://app.artport.co/api/v1",
+        "auth"    : {
+            "method" : "bearer",
+            "name"   : "Authorization"
+        },
+        "playground" : {
+            "mode" : "hide"
+        }
+    },
+    "footerSocials" : {
+        "github": "https://github.com/artport"
+    }
+}

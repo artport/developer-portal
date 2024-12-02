@@ -1,0 +1,26 @@
+---
+title: 'Authentication'
+description: 'Connect to the API and send requests'
+---
+
+### Overview
+
+ArtPort authenticates your API requests using your organization's API token, which must be included every time.
+
+<Warning>
+    Requests without a token will return a `401 Unauthorized` response.
+</Warning>
+
+### Authorization
+
+To authenticate, supply your API token in the request's header. You should configure the header so it uses `bearer` authentication e.g.
+
+```php
+request.headers.authorization = 'Bearer 2xH8eAQR...';
+```
+
+### Testing
+
+ArtPort does not currently offer a dedicated sandbox environment where you can test your code in isolation.
+
+While we are considering this, for the moment, we recommend that developers create a separate ArtPort account for testing purposes.
