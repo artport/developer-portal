@@ -1,5 +1,5 @@
 ---
-title: 'Get Addresses'
+title: 'List Addresses'
 ---
 
 import PaginationNotice from '/snippets/pagination/pagination-notice.mdx';
@@ -13,7 +13,11 @@ This endpoint can be used to retrieve a list of addresses.
 
 ### Response
 
-RESPONSE FIELDS TO GO HERE.
+<ResponseField name="data" type="array" required>
+    An array of [Address](/guide/schemas/address) objects.
+
+    If no addresses are found, the `data` field will be an empty array.
+</ResponseField>
 
 <PaginationResponseFields/>
 
