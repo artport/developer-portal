@@ -30,7 +30,8 @@
             "group" : "Concepts",
             "pages" : [
                 "guide/concepts/authentication",
-                "guide/concepts/rate-limiting"
+                "guide/concepts/rate-limiting",
+                "guide/concepts/pagination"
             ]
         },
         {
