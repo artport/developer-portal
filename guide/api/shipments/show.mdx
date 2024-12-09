@@ -21,9 +21,48 @@ This endpoint can be used to get a single shipment.
 <ResponseExample>
     ```json Example Response Structure (Status Code: 200)
     {
-        "data": [
-        "RESPONSE DATA TO GO HERE"
-        ]
+        "data": {
+            "id": 1,
+            "title": "Secured local capability",
+            "value": 7431,
+            "can_be_purchased": false,
+            "status": 2,
+            "box": 2,
+            "length": 37,
+            "width": 21,
+            "height": 1,
+            "service": 1,
+            "fulfillment_address": {
+                "id": 2,
+                "name": "Gaylord-Ratke",
+                "email": "warren25@hotmail.com",
+                "phone": "+12069536978",
+                "line_1": "684 Kiley Cape",
+                "line_2": "Suite 269",
+                "city": "Bednarburgh",
+                "region": "Idaho",
+                "post_code": "29709",
+                "country": 1,
+                "created_at": "2024-12-09 15:39:37",
+                "updated_at": "2024-12-09 15:39:37"
+            },
+            "destination_address": {
+                "id": 3,
+                "name": "Weissnat-Larkin",
+                "email": "weimann.aylin@gmail.com",
+                "phone": "+12069536978",
+                "line_1": "141 Chaim Mountains",
+                "line_2": "Apt. 556",
+                "city": "Lake Kamron",
+                "region": "South Dakota",
+                "post_code": "43650-3558",
+                "country": 1,
+                "created_at": "2024-12-09 15:39:37",
+                "updated_at": "2024-12-09 15:39:37"
+            },
+            "created_at": "2024-12-09 15:39:37",
+            "updated_at": "2024-12-09 15:39:37"
+        }
     }
     ```
 </ResponseExample>
