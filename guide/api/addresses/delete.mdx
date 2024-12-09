@@ -6,6 +6,10 @@ title: 'Delete Address'
 
 This endpoint can be used to delete an address.
 
+### Response
+
+If the address is successfully deleted, the API will return a `204 No Content` status code.
+
 <RequestExample>
     ```http Endpoint
     DELETE /api/v1/addresses/{address_id}
@@ -13,13 +17,7 @@ This endpoint can be used to delete an address.
 </RequestExample>
 
 <ResponseExample>
-    ```json Example Response Structure (Status Code: 204)
-    {
-        "data": [
-        "RESPONSE DATA TO GO HERE"
-        ]
-    }
+    ```text Example Response Structure (Status Code: 204)
+    No Content
     ```
 </ResponseExample>
-
-RESPONSE FIELDS TO GO HERE.

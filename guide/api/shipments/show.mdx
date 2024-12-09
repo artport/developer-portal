@@ -6,6 +6,12 @@ title: 'Get Shipment'
 
 This endpoint can be used to get a single shipment.
 
+### Response
+
+<ResponseField name="data" type="array" required>
+    An array containing a single [Shipment](/guide/schemas/shipment) object.
+</ResponseField>
+
 <RequestExample>
     ```http Endpoint
     GET /api/v1/shipments/{shipment_id}
@@ -21,5 +27,3 @@ This endpoint can be used to get a single shipment.
     }
     ```
 </ResponseExample>
-
-RESPONSE FIELDS TO GO HERE.
