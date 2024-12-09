@@ -56,6 +56,16 @@
                     ]
                 },
                 {
+                    "group": "Shipments",
+                    "pages": [
+                        "guide/api/shipments/list",
+                        "guide/api/shipments/show",
+                        "guide/api/shipments/create",
+                        "guide/api/shipments/update",
+                        "guide/api/shipments/delete"
+                    ]
+                },
+                {
                     "group": "Schemas",
                     "pages": [
                         "guide/api/schemas/country"
