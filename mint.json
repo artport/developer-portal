@@ -47,7 +47,8 @@
                 {
                     "group": "Addresses",
                     "pages": [
-                        "guide/api/addresses/get",
+                        "guide/api/addresses/list",
+                        "guide/api/addresses/show",
                         "guide/api/addresses/create",
                         "guide/api/addresses/update",
                         "guide/api/addresses/delete",
