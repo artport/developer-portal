@@ -4,7 +4,9 @@ title: 'Create Shipment'
 
 ### Overview
 
-This endpoint can be used to create a new shipment.
+This endpoint can be used to create a new shipments.
+
+A maximum of 10 shipments can be created in a single request.
 
 ### Request
 
@@ -12,19 +14,38 @@ REQUEST DETAILS TO GO HERE
 
 ### Response
 
-RESPONSE FIELDS TO GO HERE.
+<ResponseField name="shipments" type="array" required>
+    Details of the newly created shipments.
 
-<RequestExample>
-    ```http Endpoint
-    POST /api/v1/shipments
-    ```
-</RequestExample>
+    <Expandable title="shipments" defaultOpen="true">
+        <ResponseField name="id" type="integer" required>
+            The ID of the newly created address.
+        </ResponseField>
+
+        <ResponseField name="title" type="string" required>
+            The title of the newly created address.
+        </ResponseField>
+
+        <RequestExample>
+            ```http Endpoint
+            POST /api/v1/shipments
+            ```
+        </RequestExample>
+    </Expandable>
+</ResponseField>
 
 <ResponseExample>
     ```json Example Response Structure (Status Code: 201)
     {
-        "data": [
-        "RESPONSE DATA TO GO HERE"
+        "shipments": [
+            {
+                "id": 10011,
+                "title": "Shipment 1",
+            },
+            {
+                "id": 10012,
+                "title": "Shipment 2",
+            }
         ]
     }
     ```
