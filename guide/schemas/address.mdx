@@ -3,7 +3,51 @@ title: 'Address'
 ---
 
 <ResponseField name="id" type="integer" required>
+    ID of the address.
+</ResponseField>
+
+<ResponseField name="name" type="string" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="email" type="string" required>
     EXPLANATION TO GO HERE
+</ResponseField>
+
+<ResponseField name="phone" type="string" required>
+    EXPLANATION TO GO HERE
+</ResponseField>
+
+<ResponseField name="line_1" type="string" required>
+    EXPLANATION TO GO HERE
+</ResponseField>
+
+<ResponseField name="line_2" type="string">
+    EXPLANATION TO GO HERE
+</ResponseField>
+
+<ResponseField name="city" type="string" required>
+    EXPLANATION TO GO HERE
+</ResponseField>
+
+<ResponseField name="region" type="string" required>
+    EXPLANATION TO GO HERE
+</ResponseField>
+
+<ResponseField name="post_code" type="string" required>
+    EXPLANATION TO GO HERE
+</ResponseField>
+
+<ResponseField name="country" type="integer" required>
+    The address' country represented by a [Country](/guide/enums/countries) enum.
+</ResponseField>
+
+<ResponseField name="created_at" type="string" required>
+    Timestamp of when the address was created.
+</ResponseField>
+
+<ResponseField name="updated_at" type="string" required>
+    Timestamp of when the address was last updated.
 </ResponseField>
 
 <ResponseExample>

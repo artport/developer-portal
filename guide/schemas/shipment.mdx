@@ -3,7 +3,55 @@ title: 'Shipment'
 ---
 
 <ResponseField name="id" type="integer" required>
-    EXPLANATION TO GO HERE
+    ID of the shipment.
+</ResponseField>
+
+<ResponseField name="title" type="string" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="value" type="integer" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="status" type="integer" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="box" type="integer" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="length" type="integer" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="width" type="integer" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="height" type="integer" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="service" type="integer" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="fulfillment_address" type="object" required>
+    An [Address](/guide/schemas/address) object which represents the fulfillment address.
+</ResponseField>
+
+<ResponseField name="destination_address" type="array" required>
+    An [Address](/guide/schemas/address) object which represents the destination address.
+</ResponseField>
+
+<ResponseField name="created_at" type="string" required>
+    Timestamp of when the shipment was created.
+</ResponseField>
+
+<ResponseField name="updated_at" type="string" required>
+    Timestamp of when the shipment was last updated.
 </ResponseField>
 
 <ResponseExample>
