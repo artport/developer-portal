@@ -31,7 +31,8 @@
             "pages" : [
                 "guide/concepts/authentication",
                 "guide/concepts/rate-limiting",
-                "guide/concepts/pagination"
+                "guide/concepts/pagination",
+                "guide/concepts/formatting"
             ]
         },
         {
