@@ -42,7 +42,7 @@
             ]
         },
         {
-            "group" : "API Reference",
+            "group" : "API Endpoints",
             "pages" : [
                 {
                     "group": "Addresses",
@@ -64,13 +64,14 @@
                         "guide/api/shipments/update",
                         "guide/api/shipments/delete"
                     ]
-                },
-                {
-                    "group": "Schemas",
-                    "pages": [
-                        "guide/api/schemas/country"
-                    ]
                 }
+            ]
+        },
+        {
+            "group": "Schemas",
+            "pages": [
+                "guide/schemas/address",
+                "guide/schemas/shipment"
             ]
         },
         {
