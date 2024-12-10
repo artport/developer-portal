@@ -22,23 +22,41 @@ Method: `POST`
             Array containing the data for a single shipment to be created.
             <Expandable title="shipments.*" defaultOpen="true">
                 <ResponseField name="title" type="string" required>
-                    EXPLANATION TO GO HERE
+                    The name or a brief description of the piece. You can also use an internal reference number.
                 </ResponseField>
 
                 <ResponseField name="value" type="integer" required>
-                    EXPLANATION TO GO HERE
+                    The value of the artwork in USD $.
+
+                    Always use an accurate value to make sure that any insurance claims are properly honored.
+
+                    Minimum value: `50`
+
+                    Maximum value: `10000`
                 </ResponseField>
 
                 <ResponseField name="length" type="integer" required>
-                    EXPLANATION TO GO HERE
+                    The length of the piece in inches.
+
+                    Minimum length: `17`
+
+                    Maximum length: `44`
                 </ResponseField>
 
                 <ResponseField name="width" type="integer" required>
-                    EXPLANATION TO GO HERE
+                    The width of the piece in inches.
+
+                    Minimum width: `13`
+
+                    Maximum width: `34`
                 </ResponseField>
 
                 <ResponseField name="height" type="integer" required>
-                    EXPLANATION TO GO HERE
+                    The height of the piece in inches.
+
+                    Minimum height: `1`
+
+                    Maximum height: `4`
                 </ResponseField>
 
                 <ResponseField name="service" type="integer" required>
