@@ -10,6 +10,10 @@ Endpoint: `/api/v1/addresses/{address_id}`
 
 Method: `PATCH`
 
+<Note>
+    It's advised you use the [Verify Address](/guide/api/addresses/verify) endpoint to ensure that the address is valid before updating it.
+</Note>
+
 ### Request
 
 <ResponseField name="name" type="string" required>
@@ -57,7 +61,7 @@ Method: `PATCH`
 If the address is successfully updated, the API will return a `204 No Content` status code.
 
 <RequestExample>
-    ```json Example Request Structure
+    ```json Example Request Body Structure
     {
         "name": "Kohler Group",
         "email": "parisian.kristoffer@yahoo.com",

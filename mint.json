@@ -80,7 +80,8 @@
                 "guide/enums/countries",
                 "guide/enums/box-types",
                 "guide/enums/services",
-                "guide/enums/shipment-status"
+                "guide/enums/shipment-status",
+                "guide/enums/address-verification-status"
             ]
         }
     ],

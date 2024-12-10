@@ -12,6 +12,10 @@ Endpoint: `/api/v1/shipments`
 
 Method: `POST`
 
+<Note>
+    It's advised you use the [Verify Address](/guide/api/addresses/verify) endpoint to ensure that the fulfillment address and destination address are valid before creating the shipment.
+</Note>
+
 ### Request
 
 <ResponseField name="shipments" type="array" required>
@@ -176,7 +180,7 @@ Method: `POST`
 </ResponseField>
 
 <RequestExample>
-    ```json Example Request Structure
+    ```json Example Request Body Structure
     {
         "shipments": [
             {

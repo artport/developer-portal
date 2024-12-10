@@ -10,6 +10,10 @@ Endpoint: `/api/v1/addresses`
 
 Method: `POST`
 
+<Note>
+    It's advised you use the [Verify Address](/guide/api/addresses/verify) endpoint to ensure that the address is valid before creating it.
+</Note>
+
 ### Request
 
 <ResponseField name="name" type="string" required>
@@ -59,7 +63,7 @@ Method: `POST`
 </ResponseField>
 
 <RequestExample>
-    ```json Example Request Structure
+    ```json Example Request Body Structure
     {
         "name": "Kohler Group",
         "email": "parisian.kristoffer@yahoo.com",

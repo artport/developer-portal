@@ -10,6 +10,10 @@ Endpoint: `/api/v1/shipments/{shipment_id}`
 
 Method: `PATCH`
 
+<Note>
+    It's advised you use the [Verify Address](/guide/api/addresses/verify) endpoint to ensure that the fulfillment address and destination address are valid before creating the shipment.
+</Note>
+
 ### Request
 
 <ResponseField name="title" type="string" required>
@@ -151,7 +155,7 @@ Method: `PATCH`
 If the shipment is successfully updated, the API will return a `204 No Content` status code.
 
 <RequestExample>
-    ```json Example Request Structure
+    ```json Example Request Body Structure
     {
         "title": "Test Shipment",
         "value": 1000,
