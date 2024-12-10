@@ -6,9 +6,47 @@ title: 'Create Address'
 
 This endpoint can be used to create a new address.
 
+Endpoint: `/api/v1/addresses`
+
+Method: `POST`
+
 ### Request
 
-REQUEST DETAILS TO GO HERE
+<ResponseField name="name" type="string" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="email" type="string" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="phone" type="string" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="line_1" type="string" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="line_2" type="string">
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="city" type="string" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="region" type="string" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="post_code" type="string" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
+
+<ResponseField name="country" type="integer" required>
+    EXPLANATION TO GO HERE.
+</ResponseField>
 
 ### Response
 
@@ -17,8 +55,18 @@ REQUEST DETAILS TO GO HERE
 </ResponseField>
 
 <RequestExample>
-    ```http Endpoint
-    POST /api/v1/addresses
+    ```json Example Request Structure
+    {
+        "name": "Kohler Group",
+        "email": "parisian.kristoffer@yahoo.com",
+        "phone": "+12069536978",
+        "line_1": "193 Dach Shores Suite 632",
+        "line_2": "Apt. 300",
+        "city": "Moenburgh",
+        "region": "Colorado",
+        "post_code": "72099",
+        "country": 1,
+    }
     ```
 </RequestExample>
 
