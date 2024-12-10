@@ -1,20 +1,10 @@
 ---
-title: 'Update Address'
+title: 'Address'
 ---
 
-### Overview
-
-This endpoint can be used to update an address.
-
-Endpoint: `/api/v1/addresses/{address_id}`
-
-Method: `PATCH`
-
-<Note>
-    It's advised you use the [Verify Address](/guide/api/addresses/verify) endpoint to ensure that the address is valid before updating it.
-</Note>
-
-### Request
+<ResponseField name="id" type="integer" required>
+    ID of the address.
+</ResponseField>
 
 <ResponseField name="name" type="string" required>
     The name of the address. For example, "John Smith" or "Acme Products".
@@ -22,14 +12,10 @@ Method: `PATCH`
 
 <ResponseField name="email" type="string" required>
     The contact email for the address.
-
-    Carriers may send one or more shipment tracking notifications to this email address.
 </ResponseField>
 
 <ResponseField name="phone" type="string" required>
-    The contact number for the address.
-
-    This must be formatted using the [E.164 standard](/guide/concepts/formatting#phone-numbers).
+    The contact number for the address formatted using the [E.164 standard](/guide/concepts/formatting#phone-numbers).
 </ResponseField>
 
 <ResponseField name="line_1" type="string" required>
@@ -53,16 +39,21 @@ Method: `PATCH`
 </ResponseField>
 
 <ResponseField name="country" type="integer" required>
-    A [Country](/guide/enums/countries) enum representing the address' country.
+    The address' country represented by a [Country](/guide/enums/countries) enum.
 </ResponseField>
 
-### Response
+<ResponseField name="created_at" type="string" required>
+    Timestamp of when the address was created.
+</ResponseField>
 
-If the address is successfully updated, the API will return a `204 No Content` status code.
+<ResponseField name="updated_at" type="string" required>
+    Timestamp of when the address was last updated.
+</ResponseField>
 
-<RequestExample>
-    ```json Example Request Body Structure
+<ResponseExample>
+    ```json Example Address Structure
     {
+        "id": 1,
         "name": "Kohler Group",
         "email": "parisian.kristoffer@yahoo.com",
         "phone": "+12069536978",
@@ -72,12 +63,8 @@ If the address is successfully updated, the API will return a `204 No Content` s
         "region": "Colorado",
         "post_code": "72099",
         "country": 1,
+        "created_at": "2024-12-09 22:49:57",
+        "updated_at": "2024-12-09 22:49:57"
     }
-    ```
-</RequestExample>
-
-<ResponseExample>
-    ```text Example Response Structure (Status Code: 204)
-    No Content
     ```
 </ResponseExample>
