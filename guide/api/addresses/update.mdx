@@ -10,9 +10,11 @@ Endpoint: `/api/v1/addresses/{address_id}`
 
 Method: `PATCH`
 
-<Note>
+<Warning>
     It's advised you use the [Verify Address](/guide/api/addresses/verify) endpoint to ensure that the address is valid before updating it.
-</Note>
+
+    Failure to verify the address may result in any shipments using this address being lost, delayed, or extra charges being applied.
+</Warning>
 
 ### Request
 

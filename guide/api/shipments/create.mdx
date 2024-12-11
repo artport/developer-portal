@@ -12,9 +12,11 @@ Endpoint: `/api/v1/shipments`
 
 Method: `POST`
 
-<Note>
+<Warning>
     It's advised you use the [Verify Address](/guide/api/addresses/verify) endpoint to ensure that the fulfillment address and destination address are valid before creating the shipment.
-</Note>
+
+    Failure to verify the addresses may result in the shipment being lost, delayed, or extra charges being applied.
+</Warning>
 
 ### Request
 
