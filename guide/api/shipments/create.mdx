@@ -23,142 +23,139 @@ Method: `POST`
 <ResponseField name="shipments" type="array" required>
     Array of shipment objects to be created.
 
+    Each shipment object must consist of the following fields:
+
     <Expandable title="shipments" defaultOpen="true">
-        <ResponseField name="shipments.*" type="array" required>
-            Array containing the data for a single shipment to be created.
-            <Expandable title="shipments.*" defaultOpen="true">
-                <ResponseField name="title" type="string" required>
-                    The name or a brief description of the piece. You can also use an internal reference number.
+        <ResponseField name="title" type="string" required>
+            The name or a brief description of the piece. You can also use an internal reference number.
+        </ResponseField>
+
+        <ResponseField name="value" type="integer" required>
+            The value of the artwork in USD $.
+
+            Always use an accurate value to make sure that any insurance claims are properly honored.
+
+            Minimum value: `50`
+
+            Maximum value: `10000`
+        </ResponseField>
+
+        <ResponseField name="length" type="integer" required>
+            The length of the piece in inches.
+
+            Minimum length: `17`
+
+            Maximum length: `44`
+        </ResponseField>
+
+        <ResponseField name="width" type="integer" required>
+            The width of the piece in inches.
+
+            Minimum width: `13`
+
+            Maximum width: `34`
+        </ResponseField>
+
+        <ResponseField name="height" type="integer" required>
+            The height of the piece in inches.
+
+            Minimum height: `1`
+
+            Maximum height: `4`
+        </ResponseField>
+
+        <ResponseField name="service" type="integer" required>
+            A [Service](/guide/enums/service) enum representing the service to be used for the shipment.
+        </ResponseField>
+
+        <ResponseField name="fulfillment_address" type="array" required>
+            An object containing the fulfillment address details.
+
+            <Expandable title="fulfillment_address" defaultOpen="true">
+                <ResponseField name="name" type="string" required>
+                    The name of the fulfillment address. For example, "John Smith" or "Acme Products".
                 </ResponseField>
 
-                <ResponseField name="value" type="integer" required>
-                    The value of the artwork in USD $.
+                <ResponseField name="email" type="string" required>
+                    The contact email for the fulfillment address.
 
-                    Always use an accurate value to make sure that any insurance claims are properly honored.
-
-                    Minimum value: `50`
-
-                    Maximum value: `10000`
+                    Carriers may send one or more shipment tracking notifications to this email address.
                 </ResponseField>
 
-                <ResponseField name="length" type="integer" required>
-                    The length of the piece in inches.
+                <ResponseField name="phone" type="string" required>
+                    The contact number for the fulfillment address.
 
-                    Minimum length: `17`
-
-                    Maximum length: `44`
+                    This must be formatted using the [E.164 standard](http://artport.test/support/articles/formatting-telephone-numbers).
                 </ResponseField>
 
-                <ResponseField name="width" type="integer" required>
-                    The width of the piece in inches.
-
-                    Minimum width: `13`
-
-                    Maximum width: `34`
+                <ResponseField name="line_1" type="string" required>
+                    Line 1 of the fulfillment address.
                 </ResponseField>
 
-                <ResponseField name="height" type="integer" required>
-                    The height of the piece in inches.
-
-                    Minimum height: `1`
-
-                    Maximum height: `4`
+                <ResponseField name="line_2" type="string">
+                    Line 2 of the fulfillment address.
                 </ResponseField>
 
-                <ResponseField name="service" type="integer" required>
-                    A [Service](/guide/enums/service) enum representing the service to be used for the shipment.
+                <ResponseField name="city" type="string" required>
+                    The city of the fulfillment address.
                 </ResponseField>
 
-                <ResponseField name="fulfillment_address" type="array" required>
-                    An object containing the fulfillment address details.
-
-                    <Expandable title="fulfillment_address" defaultOpen="true">
-                        <ResponseField name="name" type="string" required>
-                            The name of the fulfillment address. For example, "John Smith" or "Acme Products".
-                        </ResponseField>
-
-                        <ResponseField name="email" type="string" required>
-                            The contact email for the fulfillment address.
-
-                            Carriers may send one or more shipment tracking notifications to this email address.
-                        </ResponseField>
-
-                        <ResponseField name="phone" type="string" required>
-                            The contact number for the fulfillment address.
-
-                            This must be formatted using the [E.164 standard](http://artport.test/support/articles/formatting-telephone-numbers).
-                        </ResponseField>
-
-                        <ResponseField name="line_1" type="string" required>
-                            Line 1 of the fulfillment address.
-                        </ResponseField>
-
-                        <ResponseField name="line_2" type="string">
-                            Line 2 of the fulfillment address.
-                        </ResponseField>
-
-                        <ResponseField name="city" type="string" required>
-                            The city of the fulfillment address.
-                        </ResponseField>
-
-                        <ResponseField name="region" type="string" required>
-                            The region of the fulfillment address.
-                        </ResponseField>
-
-                        <ResponseField name="post_code" type="string" required>
-                            The post code of the fulfillment address.
-                        </ResponseField>
-
-                        <ResponseField name="country" type="integer" required>
-                            A [Country](/guide/enums/countries) enum representing the fulfillment address' country.
-                        </ResponseField>
-                    </Expandable>
+                <ResponseField name="region" type="string" required>
+                    The region of the fulfillment address.
                 </ResponseField>
 
-                <ResponseField name="destination_address" type="array" required>
-                    An object containing the destination address details.
+                <ResponseField name="post_code" type="string" required>
+                    The post code of the fulfillment address.
+                </ResponseField>
 
-                    <Expandable title="destination_address" defaultOpen="true">
-                        <ResponseField name="name" type="string" required>
-                            The name of the destination address. For example, "John Smith" or "Acme Products".
-                        </ResponseField>
+                <ResponseField name="country" type="integer" required>
+                    A [Country](/guide/enums/countries) enum representing the fulfillment address' country.
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
 
-                        <ResponseField name="email" type="string" required>
-                            The contact email for the address.
+        <ResponseField name="destination_address" type="array" required>
+            An object containing the destination address details.
 
-                            Carriers may send one or more shipment tracking notifications to this email address.
-                        </ResponseField>
+            <Expandable title="destination_address" defaultOpen="true">
+                <ResponseField name="name" type="string" required>
+                    The name of the destination address. For example, "John Smith" or "Acme Products".
+                </ResponseField>
 
-                        <ResponseField name="phone" type="string" required>
-                            The contact number for the address.
+                <ResponseField name="email" type="string" required>
+                    The contact email for the address.
 
-                            This must be formatted using the [E.164 standard](/guide/concepts/formatting#phone-numbers).
-                        </ResponseField>
+                    Carriers may send one or more shipment tracking notifications to this email address.
+                </ResponseField>
 
-                        <ResponseField name="line_1" type="string" required>
-                            Line 1 of the destination address.
-                        </ResponseField>
+                <ResponseField name="phone" type="string" required>
+                    The contact number for the address.
 
-                        <ResponseField name="line_2" type="string">
-                            Line 2 of the destination address.
-                        </ResponseField>
+                    This must be formatted using the [E.164 standard](/guide/concepts/formatting#phone-numbers).
+                </ResponseField>
 
-                        <ResponseField name="city" type="string" required>
-                            The city of the destination address.
-                        </ResponseField>
+                <ResponseField name="line_1" type="string" required>
+                    Line 1 of the destination address.
+                </ResponseField>
 
-                        <ResponseField name="region" type="string" required>
-                            The region of the destination address.
-                        </ResponseField>
+                <ResponseField name="line_2" type="string">
+                    Line 2 of the destination address.
+                </ResponseField>
 
-                        <ResponseField name="post_code" type="string" required>
-                            The post code of the destination address.
-                        </ResponseField>
+                <ResponseField name="city" type="string" required>
+                    The city of the destination address.
+                </ResponseField>
 
-                        <ResponseField name="country" type="integer" required>
-                            A [Country](/guide/enums/countries) enum representing the destination address' country.
-                        </ResponseField>
-                    </Expandable>
+                <ResponseField name="region" type="string" required>
+                    The region of the destination address.
+                </ResponseField>
+
+                <ResponseField name="post_code" type="string" required>
+                    The post code of the destination address.
+                </ResponseField>
+
+                <ResponseField name="country" type="integer" required>
+                    A [Country](/guide/enums/countries) enum representing the destination address' country.
                 </ResponseField>
             </Expandable>
         </ResponseField>
