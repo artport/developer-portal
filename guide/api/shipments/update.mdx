@@ -2,6 +2,8 @@
 title: 'Update Shipment'
 ---
 
+import ShipmentIdField from '/snippets/api/url-parameters/shipment-id.mdx';
+
 ### Overview
 
 This endpoint can be used to update a shipment.
@@ -10,14 +12,24 @@ Endpoint: `/api/v1/shipments/{shipment_id}`
 
 Method: `PATCH`
 
-<Note>
+<Warning>
     It's advised you use the [Verify Address](/guide/api/addresses/verify) endpoint to ensure that the fulfillment address and destination address are valid before creating the shipment.
-</Note>
+
+    Failure to verify the addresses may result in the shipment being lost, delayed, or extra charges being applied.
+</Warning>
+
+### URL Parameters
+
+<ShipmentIdField action="update"/>
 
 ### Request
 
 <ResponseField name="title" type="string" required>
     The name or a brief description of the piece. You can also use an internal reference number.
+
+    Minimum character length: `2`
+
+    Maximum character length: `50`
 </ResponseField>
 
 <ResponseField name="value" type="integer" required>
@@ -64,38 +76,70 @@ Method: `PATCH`
     <Expandable title="fulfillment_address" defaultOpen="true">
         <ResponseField name="name" type="string" required>
             The name of the fulfillment address. For example, "John Smith" or "Acme Products".
+
+            Minimum character length: `2`
+
+            Maximum character length: `50`
         </ResponseField>
 
         <ResponseField name="email" type="string" required>
             The contact email for the fulfillment address.
 
             Carriers may send one or more shipment tracking notifications to this email address.
+
+            Minimum character length: `6`
+
+            Maximum character length: `100`
         </ResponseField>
 
         <ResponseField name="phone" type="string" required>
             The contact number for the fulfillment address.
 
             This must be formatted using the [E.164 standard](http://artport.test/support/articles/formatting-telephone-numbers).
+
+            Minimum character length: `7`
+
+            Maximum character length: `30`
         </ResponseField>
 
         <ResponseField name="line_1" type="string" required>
             Line 1 of the fulfillment address.
+
+            Minimum character length: `2`
+
+            Maximum character length: `35`
         </ResponseField>
 
         <ResponseField name="line_2" type="string">
             Line 2 of the fulfillment address.
+
+            Minimum character length: `2`
+
+            Maximum character length: `35`
         </ResponseField>
 
         <ResponseField name="city" type="string" required>
             The city of the fulfillment address.
+
+            Minimum character length: `2`
+
+            Maximum character length: `35`
         </ResponseField>
 
         <ResponseField name="region" type="string" required>
             The region of the fulfillment address.
+
+            Minimum character length: `2`
+
+            Maximum character length: `30`
         </ResponseField>
 
         <ResponseField name="post_code" type="string" required>
             The post code of the fulfillment address.
+
+            Minimum character length: `2`
+
+            Maximum character length: `16`
         </ResponseField>
 
         <ResponseField name="country" type="integer" required>
@@ -110,38 +154,70 @@ Method: `PATCH`
     <Expandable title="destination_address" defaultOpen="true">
         <ResponseField name="name" type="string" required>
             The name of the destination address. For example, "John Smith" or "Acme Products".
+
+            Minimum character length: `2`
+
+            Maximum character length: `50`
         </ResponseField>
 
         <ResponseField name="email" type="string" required>
             The contact email for the address.
 
             Carriers may send one or more shipment tracking notifications to this email address.
+
+            Minimum character length: `6`
+
+            Maximum character length: `100`
         </ResponseField>
 
         <ResponseField name="phone" type="string" required>
             The contact number for the address.
 
             This must be formatted using the [E.164 standard](/guide/concepts/formatting#phone-numbers).
+
+            Minimum character length: `7`
+
+            Maximum character length: `30`
         </ResponseField>
 
         <ResponseField name="line_1" type="string" required>
             Line 1 of the destination address.
+
+            Minimum character length: `2`
+
+            Maximum character length: `35`
         </ResponseField>
 
         <ResponseField name="line_2" type="string">
             Line 2 of the destination address.
+
+            Minimum character length: `2`
+
+            Maximum character length: `35`
         </ResponseField>
 
         <ResponseField name="city" type="string" required>
             The city of the destination address.
+
+            Minimum character length: `2`
+
+            Maximum character length: `35`
         </ResponseField>
 
         <ResponseField name="region" type="string" required>
             The region of the destination address.
+
+            Minimum character length: `2`
+
+            Maximum character length: `30`
         </ResponseField>
 
         <ResponseField name="post_code" type="string" required>
             The post code of the destination address.
+
+            Minimum character length: `2`
+
+            Maximum character length: `16`
         </ResponseField>
 
         <ResponseField name="country" type="integer" required>
@@ -190,7 +266,7 @@ If the shipment is successfully updated, the API will return a `204 No Content` 
 </RequestExample>
 
 <ResponseExample>
-    ```text Example Response Structure (Status Code: 204)
+    ```text 204
     No Content
     ```
 </ResponseExample>

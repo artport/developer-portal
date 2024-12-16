@@ -1,5 +1,5 @@
 ---
-title: 'Authentication'
+title: 'Requests'
 description: 'Connect to the API and send requests'
 ---
 
@@ -19,8 +19,11 @@ To authenticate, supply your API token in the request's header. You should confi
 request.headers.authorization = 'Bearer 2xH8eAQR...';
 ```
 
-### Testing
+### Headers and Format
 
-ArtPort does not currently offer a dedicated sandbox environment where you can test your code in isolation.
+The ArtPort API accepts request bodies in JSON format. When sending a request, you should include the following headers to indicate that you are sending and expecting JSON:
 
-While we are considering this, for the moment, we recommend that developers create a separate ArtPort account for testing purposes.
+```text
+Accept: application/json
+Content-Type: application/json
+```

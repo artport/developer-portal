@@ -2,6 +2,8 @@
 title: 'Get Address'
 ---
 
+import AddressIdField from '/snippets/api/url-parameters/address-id.mdx';
+
 ### Overview
 
 This endpoint can be used to get a single address.
@@ -10,20 +12,18 @@ Endpoint: `/api/v1/addresses/{address_id}`
 
 Method: `GET`
 
+### URL Parameters
+
+<AddressIdField action="retrieve"/>
+
 ### Response
 
 <ResponseField name="data" type="array" required>
     An array containing a single [Address](/guide/schemas/address) object.
 </ResponseField>
 
-<RequestExample>
-    ```http Endpoint
-    GET /api/v1/addresses/{address_id}
-    ```
-</RequestExample>
-
 <ResponseExample>
-    ```json Example Response Structure (Status Code: 200)
+    ```json 200
     {
         "data": {
             "id": 1,

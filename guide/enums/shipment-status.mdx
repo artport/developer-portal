@@ -5,16 +5,19 @@ description: ''
 
 ### Overview
 
-| Token | Shipment Status |
-|-------|-----------------|
-| 1     | Draft           |
-| 2     | Confirmed       |
-| 3     | Pending         |
-| 4     | Allocated       |
-| 5     | Scheduled       |
-| 6     | Dispatched      |
-| 7     | Delivered       |
-| 8     | Filed           |
-| 9     | Collection      |
-| 10    | Shipped         |
-| 11    | Completed       |
+The following enum values represent the shipment statuses that are supported by the ArtPort API:
+
+| ID | Shipment Status | Description                                                |
+|----|-----------------|------------------------------------------------------------|
+| 1  | Draft           | The shipment is ready. Proceed to checkout to complete.    |
+| 2  | Confirmed       | Purchase confirmed, shipment is now awaiting assignment.   |
+| 3  | Pending         | Shipment has been assigned to a warehouse for processing.  |
+| 4  | Allocated       | Shipment is being prepared at the distribution warehouse.  |
+| 5  | Scheduled       | Shipment scheduled for delivery to fulfillment address.    |
+| 6  | Dispatched      | Shipment is currently en-route to the fulfillment address. |
+| 7  | Delivered       | Shipment has been delivered to fulfillment address.        |
+| 8  | Filed           | Condition report received, pick-up is being scheduled.     |
+| 9  | Collection      | Artwork pick-up scheduled from the fulfillment address.    |
+| 10 | Shipped         | Artwork has been collected and is en-route to destination. |
+| 11 | Arrived         | Artwork successfully delivered to the destination address. |
+| 11 | Completed       | Artwork arrival condition report has been received.        |

@@ -5,10 +5,20 @@ description: ''
 
 ### Overview
 
-| Token | Status       |
-|-------|--------------|
-| 1     | Rate Limited |
-| 2     | Unverified   |
-| 3     | Invalid      |
-| 3     | Recommended  |
-| 3     | Accepted     |
+The following enum values represent the address verification status that can be returned by the ArtPort API:
+
+| ID | Status       | Description                                                                 |
+|----|--------------|-----------------------------------------------------------------------------|
+| 0  | Rate Limited | ArtPort has hit the rate limit of the external address verification system. |
+| 1  | Unverified   | Something went wrong while checking the address.                            |
+| 2  | Invalid      | A matching address could not be found.                                      |
+| 3  | Recommended  | The address was not found, but a similar one exists.                        |
+| 4  | Accepted     | The address has been verified.                                              |
+
+<Note>
+    ArtPort makes use of external services to verify addresses.
+
+    A `0 (Rate Limited)` status does not indicate that your request to ArtPort was rate limited, but that ArtPort's request to the external service was rate limited.
+
+    Unfortunately, ArtPort cannot provide more information about this rate limiting. Therefore, it's recommended to use a backoff strategy and retry the request after a short delay.
+</Note>
