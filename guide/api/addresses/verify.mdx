@@ -8,11 +8,9 @@ This endpoint can be used to verify an address.
 
 Endpoint: `/api/v1/addresses/verify`
 
-Method: `GET`
+Method: `POST`
 
 ### Request
-
-The following URL-encoded query parameters are required:
 
 <ResponseField name="name" type="string" required>
     The name of the address. For example, "John Smith" or "Acme Products".
@@ -120,30 +118,31 @@ Otherwise, the endpoint will return a `400` status code with the following field
 </ResponseField>
 
 <RequestExample>
-    ```http Example Request Structure (URL Encoded)
-    GET /api/v1/addresses/verify
-        ?name=Kohler+Group
-        &email=parisian.kristoffer%40yahoo.com
-        &phone=%2B12069536978
-        &line_1=193+Dach+Shores+Suite+632
-        &line_2=Apt.+300
-        &city=Moenburgh
-        &region=Colorado
-        &post_code=72099
-        &country=1
+    ```json Example Request Body Structure
+    {
+        "name": "Kohler Group",
+        "email": "artport.example@example.com",
+        "phone": "+123456789",
+        "line_1": "123 Example Street",
+        "line_2": "Apt. 456",
+        "city": "Moenburgh",
+        "region": "Colorado",
+        "post_code": "72099",
+        "country": 1,
+    }
     ```
 </RequestExample>
 
 <ResponseExample>
-    ```text Example Response Structure (Status Code: 200)
+    ```text 200
     No Content
     ```
 
-    ```json Example Response Structure (Status Code: 400)
+    ```json 400
     {
         "name": "Kohler Group",
-        "email": "parisian.kristoffer@yahoo.com",
-        "phone": "+12069536978",
+        "email": "artport.example@example.com",
+        "phone": "+123456789",
         "line_1": "Revised line 1",
         "line_2": "Revised line 2",
         "city": "Revised city",
