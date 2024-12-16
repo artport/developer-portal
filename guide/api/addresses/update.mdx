@@ -2,6 +2,8 @@
 title: 'Update Address'
 ---
 
+import AddressIdField from '/snippets/api/url-parameters/address-id.mdx';
+
 ### Overview
 
 This endpoint can be used to update an address.
@@ -15,6 +17,10 @@ Method: `PATCH`
 
     Failure to verify the address may result in any shipments using this address being lost, delayed, or extra charges being applied.
 </Warning>
+
+### URL Parameters
+
+<AddressIdField action="update"/>
 
 ### Request
 

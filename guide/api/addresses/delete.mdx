@@ -2,6 +2,8 @@
 title: 'Delete Address'
 ---
 
+import AddressIdField from '/snippets/api/url-parameters/address-id.mdx';
+
 ### Overview
 
 This endpoint can be used to delete an address.
@@ -10,13 +12,13 @@ Endpoint: `/api/v1/addresses/{address_id}`
 
 Method: `DELETE`
 
+### URL Parameters
+
+<AddressIdField action="delete"/>
+
 ### Response
 
 If the address is successfully deleted, the API will return a `204 No Content` status code.
-
-<RequestExample>
-
-</RequestExample>
 
 <ResponseExample>
     ```text 204

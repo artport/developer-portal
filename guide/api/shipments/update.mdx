@@ -2,6 +2,8 @@
 title: 'Update Shipment'
 ---
 
+import ShipmentIdField from '/snippets/api/url-parameters/shipment-id.mdx';
+
 ### Overview
 
 This endpoint can be used to update a shipment.
@@ -15,6 +17,10 @@ Method: `PATCH`
 
     Failure to verify the addresses may result in the shipment being lost, delayed, or extra charges being applied.
 </Warning>
+
+### URL Parameters
+
+<ShipmentIdField action="update"/>
 
 ### Request
 
