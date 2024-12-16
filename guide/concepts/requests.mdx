@@ -1,5 +1,5 @@
 ---
-title: 'Authentication'
+title: 'Requests'
 description: 'Connect to the API and send requests'
 ---
 
@@ -17,4 +17,13 @@ To authenticate, supply your API token in the request's header. You should confi
 
 ```php
 request.headers.authorization = 'Bearer 2xH8eAQR...';
+```
+
+### Headers and Format
+
+The ArtPort API accepts request bodies in JSON format. When sending a request, you should include the following headers to indicate that you are sending and expecting JSON:
+
+```text
+Accept: application/json
+Content-Type: application/json
 ```
