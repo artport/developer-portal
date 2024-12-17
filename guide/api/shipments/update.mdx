@@ -24,6 +24,17 @@ Method: `PATCH`
 
 ### Request
 
+<Note>
+    When updating a shipment, you can use either of the following two approaches to specify the fulfillment and destination addresses:
+
+    - Using the `fulfillment_address_id` and `destination_address_id` fields to reference existing addresses that have already been stored in ArtPort.
+    - Providing the address details directly in the `fulfillment_address` and `destination_address` fields.
+
+    Please note, you can use a combination of both approaches. For example, you can provide the `fulfillment_address_id` and `destination_address` fields, or vice versa.
+
+    For examples of how to use these fields, see the request examples on this page.
+</Note>
+
 <ResponseField name="title" type="string" required>
     The name or a brief description of the piece. You can also use an internal reference number.
 
@@ -70,8 +81,16 @@ Method: `PATCH`
     A [Service](/guide/enums/service) enum representing the service to be used for the shipment.
 </ResponseField>
 
+<ResponseField name="fulfillment_address_id" type="integer">
+    The ID of an existing address to be used as the fulfillment address.
+
+    <Note>This field is required if the `fulfillment_address` field is not provided.</Note>
+</ResponseField>
+
 <ResponseField name="fulfillment_address" type="array" required>
     An object containing the fulfillment address details.
+
+    <Note>This field is required if the `fulfillment_address_id` field is not provided.</Note>
 
     <Expandable title="fulfillment_address" defaultOpen="true">
         <ResponseField name="name" type="string" required>
@@ -148,8 +167,16 @@ Method: `PATCH`
     </Expandable>
 </ResponseField>
 
+<ResponseField name="destination_address_id" type="integer">
+    The ID of an existing address to be used as the destination address.
+
+    <Note>This field is required if the `destination_address` field is not provided.</Note>
+</ResponseField>
+
 <ResponseField name="destination_address" type="array" required>
     An object containing the destination address details.
+
+    <Note>This field is required if the `destination_address_id` field is not provided.</Note>
 
     <Expandable title="destination_address" defaultOpen="true">
         <ResponseField name="name" type="string" required>
@@ -231,7 +258,20 @@ Method: `PATCH`
 If the shipment is successfully updated, the API will return a `204 No Content` status code.
 
 <RequestExample>
-    ```json Example Request Body Structure
+    ```json Request (with address IDs)
+    {
+        "title": "Test Shipment",
+        "value": 1000,
+        "length": 17,
+        "width": 13,
+        "height": 1,
+        "service": 1,
+        "fulfillment_address_id": 123,
+        "destination_address_id": 456
+    }
+    ```
+
+    ```json Request (with address details)
     {
         "title": "Test Shipment",
         "value": 1000,
@@ -261,6 +301,29 @@ If the shipment is successfully updated, the API will return a `204 No Content` 
             "post_code": "62893",
             "country": 1
         }
+    }
+    ```
+
+    ```json Request (mixed)
+    {
+        "title": "Test Shipment",
+        "value": 1000,
+        "length": 17,
+        "width": 13,
+        "height": 1,
+        "service": 1,
+        "fulfillment_address": {
+            "name": "Schaefer, Nolan and Wehner",
+            "email": "dave45@gmail.com",
+            "phone": "+12069536978",
+            "line_1": "492 Quitzon Avenue Apt. 157",
+            "line_2": "Apt. 027",
+            "city": "Gustside",
+            "region": "Massachusetts",
+            "post_code": "17594-7013",
+            "country": 1
+        },
+        "destination_address_id": 123
     }
     ```
 </RequestExample>
