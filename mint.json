@@ -70,7 +70,8 @@
                 {
                     "group": "Checkout",
                     "pages": [
-                        "guide/api/checkout/create"
+                        "guide/api/checkout/create",
+                        "guide/api/checkout/store"
                     ]
                 }
             ]

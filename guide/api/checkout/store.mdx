@@ -1,0 +1,108 @@
+---
+title: 'Finalize Checkout Session'
+---
+
+### Overview
+
+This endpoint can be used to finalize a checkout session and pay for the shipments.
+
+A maximum of 10 shipments can be finalized in a single checkout session.
+
+<Warning>
+    This endpoint will finalize the checkout session and charge the cost of all the shipments in the session to the organization's payment method.
+
+    Please ensure all shipments are correct before finalising the checkout session. Failure to do so may result in delays, lost shipments, or extra charges.
+</Warning>
+
+Endpoint: `/api/v1/checkout`
+
+Method: `POST`
+
+### Request
+
+<ResponseField name="shipments" type="array" required>
+    An array of shipment IDs to be included in the checkout session that should be finalized.
+
+    A maximum of `10` shipments can be included in a single checkout session.
+
+    <Expandable title="shipments" defaultOpen="true">
+        <ResponseField name="id" type="integer" required>
+            The ID of the shipment to include in the checkout session.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ResponseField name="shipments" type="array" required>
+    An array of integers showing the cost of each shipment included in the checkout session.
+
+    Each shipment ID is mapped to its cost. For example, `125: 4500` means that a shipment with ID `125` has a cost of `4500`.
+
+    Costs are returned in the lowest denomination of the currency. For example, `4500` would represent `4500` cents (`$45.00`) in USD.
+</ResponseField>
+
+<ResponseField name="shipments" type="integer" required>
+    The total cost of all shipments included in the checkout session.
+
+    The total cost is returned in the lowest denomination of the currency. For example, `17500` would represent `17500` cents (`$175.00`) in USD.
+</ResponseField>
+
+### Response (204)
+
+If the payment is successful and the checkout session is finalized, the endpoint will return a `204` status code with no content.
+
+### Response (402)
+
+This response will be returned if the payment is declined by the payment provider.
+
+<ResponseField name="status" type="integer" required>
+    The internal status code of the error.
+</ResponseField>
+
+<ResponseField name="message" type="string" required>
+    A human-readable message explaining the error.
+</ResponseField>
+
+### Response (409)
+
+This response will be returned if the payment fails.
+
+<ResponseField name="status" type="integer" required>
+    The internal status code of the error.
+</ResponseField>
+
+<ResponseField name="message" type="string" required>
+    A human-readable message explaining the error.
+</ResponseField>
+
+<RequestExample>
+    ```json Example Request Body Structure
+    {
+        "shipments": [
+            125,
+            126,
+            127
+        ]
+    }
+    ```
+</RequestExample>
+
+<ResponseExample>
+    ```text 204
+    No Content
+    ```
+
+    ```json 402
+    {
+        "status": 0,
+        "message": "Your card was declined... check your wallet"
+    }
+    ```
+
+    ```json 409
+    {
+        "status": 1,
+        "message": "Something went wrong... please try again"
+    }
+    ```
+</ResponseExample>
+
