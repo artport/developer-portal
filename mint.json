@@ -66,6 +66,12 @@
                         "guide/api/shipments/update",
                         "guide/api/shipments/delete"
                     ]
+                },
+                {
+                    "group": "Checkout",
+                    "pages": [
+                        "guide/api/checkout/create"
+                    ]
                 }
             ]
         },
