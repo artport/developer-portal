@@ -1,0 +1,39 @@
+---
+title: 'Show Condition Report'
+---
+
+### Overview
+
+This endpoint can be used to retrieve the condition report for a given shipment.
+
+Endpoint: `/api/v1/reports/{shipment_id}`
+
+Method: `GET`
+
+### URL Parameters
+
+<ResponseField name="shipment_id" type="integer" required>
+    The ID of the shipment to retrieve the condition report for.
+</ResponseField>
+
+### Response (200)
+
+This response will be returned if the shipment has a condition report.
+
+<ResponseField name="images" type="string" required>
+    A URL to a ZIP file containing the condition report images.
+
+    Note: The URL is a temporary, signed URL which will expire 1 week after generating.
+</ResponseField>
+
+### Response (403)
+
+This response will be returned if the shipment does not have a condition report.
+
+<ResponseExample>
+    ```json 200
+    {
+        "images": "https://artport.co/temporary-url-to-zip-file"
+    }
+    ```
+</ResponseExample>

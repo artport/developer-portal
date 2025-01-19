@@ -73,6 +73,12 @@
                         "guide/api/checkout/create",
                         "guide/api/checkout/store"
                     ]
+                },
+                {
+                    "group": "Condition Reports",
+                    "pages": [
+                        "guide/api/condition-reports/show"
+                    ]
                 }
             ]
         },
