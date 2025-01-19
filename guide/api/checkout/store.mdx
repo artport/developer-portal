@@ -8,15 +8,15 @@ This endpoint can be used to finalize a checkout session and pay for the shipmen
 
 A maximum of 10 shipments can be finalized in a single checkout session.
 
+Endpoint: `/api/v1/checkout`
+
+Method: `POST`
+
 <Warning>
     This endpoint will finalize the checkout session and charge the cost of all the shipments in the session to the organization's payment method.
 
     Please ensure all shipments are correct before finalising the checkout session. Failure to do so may result in delays, lost shipments, or extra charges.
 </Warning>
-
-Endpoint: `/api/v1/checkout`
-
-Method: `POST`
 
 ### Request
 

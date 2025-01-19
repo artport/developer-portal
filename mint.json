@@ -77,7 +77,8 @@
                 {
                     "group": "Condition Reports",
                     "pages": [
-                        "guide/api/condition-reports/show"
+                        "guide/api/condition-reports/show",
+                        "guide/api/condition-reports/store"
                     ]
                 }
             ]

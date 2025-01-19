@@ -1,0 +1,57 @@
+---
+title: 'Store Condition Report'
+---
+
+### Overview
+
+This endpoint can be used to store the condition report for a given shipment.
+
+Endpoint: `/api/v1/reports/{shipment_id}/{set}`
+
+Method: `GET`
+
+<Info>
+    A shipment's condition report is made up of two "sets".
+
+    Set `1` contains the images of the shipment's condition before it was shipped.
+
+    Set `2` contains the images of the shipment's condition after it was received.
+</Info>
+
+### URL Parameters
+
+<ResponseField name="shipment_id" type="integer" required>
+    The ID of the shipment to retrieve the condition report for.
+</ResponseField>
+
+<ResponseField name="set" type="integer" required>
+    The set of images to store. This can be either `1` or `2`.
+</ResponseField>
+
+### Request
+
+<ResponseField name="box" type="array" required>
+    Array of images to be stored in the report to show the condition of the shipment's box.
+
+    Required number of images: `6`.
+
+    Maximum file size for each image: `1MB`.
+</ResponseField>
+
+<ResponseField name="art" type="array" required>
+    Array of images to be stored in the report to show the condition of the shipment's art.
+
+    Required number of images: `6`.
+
+    Maximum file size for each image: `1MB`.
+</ResponseField>
+
+### Response (201)
+
+This response will be returned if the condition report is successfully stored.
+
+<ResponseExample>
+    ```text 201
+    No content
+    ```
+</ResponseExample>
