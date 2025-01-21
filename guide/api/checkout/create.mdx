@@ -1,0 +1,86 @@
+---
+title: 'Create Checkout Session'
+---
+
+### Overview
+
+This endpoint can be used to create a checkout session for a list of shipments.
+
+Endpoint: `/api/v1/checkout`
+
+Method: `GET`
+
+<Note>
+    A maximum of 10 shipments can be included in a single checkout session.
+</Note>
+
+### Request
+
+<ResponseField name="shipments" type="array" required>
+    An array of up to `10` shipment IDs to be included in the checkout session.
+
+    <Expandable title="shipments" defaultOpen="true">
+        <ResponseField name="id" type="integer" required>
+            The ID of the shipment to include in the checkout session.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+### Response (200)
+
+<ResponseField name="shipments" type="array" required>
+    An array of integers showing the price of each shipment included in the checkout session.
+
+    Each shipment ID is mapped to its price. For example, `125: 4500` means that a shipment with ID `125` has a price of `4500`.
+
+    Prices are displayed in U.S. cents. For example, a price of `4500` is equal to `4500` cents (`$45.00` U.S. dollars).
+</ResponseField>
+
+<ResponseField name="total" type="integer" required>
+    The total price of all shipments included in the checkout session.
+
+    The total is displayed in U.S. cents. For example, a total of `17500` is equal to `17500` cents (`$175.00` U.S. dollars).
+</ResponseField>
+
+### Response (500)
+
+<ResponseField name="status" type="integer" required>
+    A [Checkout Session Status](/guide/enums/checkout-session-status) enum representing the status of the checkout session.
+</ResponseField>
+
+<ResponseField name="message" type="string" required>
+    A human-readable message explaining the error.
+</ResponseField>
+
+<RequestExample>
+    ```json Example Request Body Structure
+    {
+        "shipments": [
+            125,
+            126,
+            127
+        ]
+    }
+    ```
+</RequestExample>
+
+<ResponseExample>
+    ```json 200
+    {
+        "shipments": [
+            125: 4500,
+            126: 6000,
+            127: 7000,
+        ],
+        "total": 17500
+    }
+    ```
+
+    ```json 500
+    {
+        "status": 0,
+        "message": "Sorry, we're receiving a lot of requests... try again in a minute"
+    }
+    ```
+</ResponseExample>
+

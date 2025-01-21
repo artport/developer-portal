@@ -1,0 +1,144 @@
+---
+title: 'Store Condition Report'
+---
+
+### Overview
+
+This endpoint can be used to store the condition report for a given shipment.
+
+Endpoint: `/api/v1/reports/{shipment_id}/{set}`
+
+Method: `POST`
+
+<Info>
+    A shipment's condition report is made up of two "sets".
+
+    Set `1` contains the photos of the shipment (artwork and box) before it is shipped.
+
+    Set `2` contains the photos of the shipment (artwork and box) after it is received.
+</Info>
+
+### Requirements
+
+In order to submit `Set 1`, the [shipment's status](/guide/enums/shipment-status) must be `Delivered`, and the submission must be made within `30 days` of the shipment's arrival at the fulfillment address.
+
+In order to submit `Set 2`, the [shipment's status](/guide/enums/shipment-status) must be `Arrived`, and the submission must be made within `24 hours` of the shipment's arrival at the destination address.
+
+### URL Parameters
+
+<ResponseField name="shipment_id" type="integer" required>
+    The ID of the shipment.
+</ResponseField>
+
+<ResponseField name="set" type="integer" required>
+    The set being uploaded. This can be either `1` or `2`.
+</ResponseField>
+
+### Request
+
+Since the request requires that photos (binary files) are included, you will need to ensure that the request is sent as `multipart/form-data`.
+
+<ResponseField name="box" type="array" required>
+    An array of photos that document the condition of the shipment's box.
+
+    Required number of photos: `6`.
+
+    Maximum file size for each photo: `1MB`.
+
+    Permitted file types for the photo: `JPG, PNG`.
+
+    The photos should be ordered within the array like so:
+
+    - Front surface
+    - Back surface
+    - Top surface
+    - Bottom surface
+    - Left surface
+    - Right surface
+</ResponseField>
+
+<ResponseField name="art" type="array" required>
+    An array of photos that document the condition of the shipment's artwork.
+
+    Required number of photos: `6`.
+
+    Maximum file size for each photo: `1MB`.
+
+    Permitted file types for the photo: `JPG, PNG`.
+
+    The photos should be ordered within the array like so:
+
+    - Front surface
+    - Back surface
+    - Top surface
+    - Bottom surface
+    - Left surface
+    - Right surface
+</ResponseField>
+
+<RequestExample>
+    ```shell Example Request (cURL)
+    curl -X POST https://artport.co/api/v1/reports/1/1 \
+        -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+        -F "box[]=@/path/to/box_1.jpg" \
+        -F "box[]=@/path/to/box_2.jpg" \
+        -F "box[]=@/path/to/box_3.jpg" \
+        -F "box[]=@/path/to/box_4.jpg" \
+        -F "box[]=@/path/to/box_5.jpg" \
+        -F "box[]=@/path/to/box_6.jpg" \
+        -F "art[]=@/path/to/art_1.jpg" \
+        -F "art[]=@/path/to/art_2.jpg" \
+        -F "art[]=@/path/to/art_3.jpg" \
+        -F "art[]=@/path/to/art_4.jpg" \
+        -F "art[]=@/path/to/art_5.jpg" \
+        -F "art[]=@/path/to/art_6.jpg"
+    ```
+
+    ```js Example Request (JS / Node)
+    const fs = require('fs');
+    const FormData = require('form-data');
+
+    const formData = new FormData();
+
+    formData.append('box[]', fs.createReadStream('images/box_1.jpg'));
+    formData.append('box[]', fs.createReadStream('images/box_2.jpg'));
+    formData.append('box[]', fs.createReadStream('images/box_3.jpg'));
+    formData.append('box[]', fs.createReadStream('images/box_4.jpg'));
+    formData.append('box[]', fs.createReadStream('images/box_5.jpg'));
+    formData.append('box[]', fs.createReadStream('images/box_6.jpg'));
+
+    formData.append('art[]', fs.createReadStream('images/art_1.jpg'));
+    formData.append('art[]', fs.createReadStream('images/art_2.jpg'));
+    formData.append('art[]', fs.createReadStream('images/art_3.jpg'));
+    formData.append('art[]', fs.createReadStream('images/art_4.jpg'));
+    formData.append('art[]', fs.createReadStream('images/art_5.jpg'));
+    formData.append('art[]', fs.createReadStream('images/art_6.jpg'));
+
+    fetch('https://artport.co/api/v1/reports/1/1', {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+            ...formData.getHeaders()
+        },
+        body: formData
+    })
+    .then(response => {
+        if (response.status === 201) {
+            console.log('Upload successful! No content returned.');
+        } else {
+            throw new Error(`Unexpected response status: ${response.status}`);
+        }
+    })
+    .catch(error => console.error('Upload failed:', error));
+    ```
+</RequestExample>
+
+### Response (201)
+
+This response will be returned if the condition report is successfully stored.
+
+<ResponseExample>
+    ```text 201
+    No content
+    ```
+</ResponseExample>

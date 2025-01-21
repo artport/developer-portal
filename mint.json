@@ -66,6 +66,20 @@
                         "guide/api/shipments/update",
                         "guide/api/shipments/delete"
                     ]
+                },
+                {
+                    "group": "Checkout",
+                    "pages": [
+                        "guide/api/checkout/create",
+                        "guide/api/checkout/store"
+                    ]
+                },
+                {
+                    "group": "Condition Reports",
+                    "pages": [
+                        "guide/api/condition-reports/show",
+                        "guide/api/condition-reports/store"
+                    ]
                 }
             ]
         },
@@ -79,11 +93,12 @@
         {
             "group": "Enums",
             "pages": [
-                "guide/enums/countries",
+                "guide/enums/address-verification-status",
                 "guide/enums/box-types",
+                "guide/enums/checkout-session-status",
+                "guide/enums/countries",
                 "guide/enums/services",
-                "guide/enums/shipment-status",
-                "guide/enums/address-verification-status"
+                "guide/enums/shipment-status"
             ]
         }
     ],
