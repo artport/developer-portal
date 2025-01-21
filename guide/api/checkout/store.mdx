@@ -6,53 +6,45 @@ title: 'Finalize Checkout Session'
 
 This endpoint can be used to finalize a checkout session and pay for the shipments.
 
-A maximum of 10 shipments can be finalized in a single checkout session.
-
 Endpoint: `/api/v1/checkout`
 
 Method: `POST`
 
-<Warning>
-    This endpoint will finalize the checkout session and charge the cost of all the shipments in the session to the organization's payment method.
+<Note>
+    A maximum of 10 shipments can be included in a single checkout session.
+</Note>
 
-    Please ensure all shipments are correct before finalising the checkout session. Failure to do so may result in delays, lost shipments, or extra charges.
+<Warning>
+    This endpoint will charge the total price of each shipment in the checkout session to the organization's payment method.
+
+    Please ensure that all shipments are correct, and that addresses have been verified before finalising the checkout session.
+
+    Failure to do so may result in delays, lost shipments, or extra charges.
 </Warning>
 
 ### Request
 
 <ResponseField name="shipments" type="array" required>
-    An array of shipment IDs to be included in the checkout session that should be finalized.
-
-    A maximum of `10` shipments can be included in a single checkout session.
+    An array of up to `10` shipment IDs to be included in the finalized checkout session.
 
     <Expandable title="shipments" defaultOpen="true">
         <ResponseField name="id" type="integer" required>
-            The ID of the shipment to include in the checkout session.
+            The ID of the shipment to finalize in the checkout session.
         </ResponseField>
     </Expandable>
 </ResponseField>
 
-<ResponseField name="shipments" type="array" required>
-    An array of integers showing the cost of each shipment included in the checkout session.
-
-    Each shipment ID is mapped to its cost. For example, `125: 4500` means that a shipment with ID `125` has a cost of `4500`.
-
-    Costs are returned in the lowest denomination of the currency. For example, `4500` would represent `4500` cents (`$45.00`) in USD.
-</ResponseField>
-
-<ResponseField name="shipments" type="integer" required>
-    The total cost of all shipments included in the checkout session.
-
-    The total cost is returned in the lowest denomination of the currency. For example, `17500` would represent `17500` cents (`$175.00`) in USD.
-</ResponseField>
-
 ### Response (204)
 
-If the payment is successful and the checkout session is finalized, the endpoint will return a `204` status code with no content.
+This response will be returned if the payment is successful. Note that the response will not contain any content. Therefore, you should check for the presence of `204` HTTP status code.
 
 ### Response (402)
 
 This response will be returned if the payment is declined by the payment provider.
+
+<Note>
+    Receiving this response will automatically invalidate your payment method. You will need to address this via the ArtPort website before you can make further payment attempts.
+</Note>
 
 <ResponseField name="status" type="integer" required>
     The internal status code of the error.
@@ -64,7 +56,11 @@ This response will be returned if the payment is declined by the payment provide
 
 ### Response (409)
 
-This response will be returned if the payment fails.
+This response will be returned if the payment fails. In most cases, this is a temporary error and you can simply retry the request.
+
+<Note>
+    It is recommended that you wait a minute or so before retrying. This increases the chance that your request will be processed successfully.
+</Note>
 
 <ResponseField name="status" type="integer" required>
     The internal status code of the error.

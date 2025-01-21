@@ -93,11 +93,12 @@
         {
             "group": "Enums",
             "pages": [
-                "guide/enums/countries",
+                "guide/enums/address-verification-status",
                 "guide/enums/box-types",
+                "guide/enums/checkout-session-status",
+                "guide/enums/countries",
                 "guide/enums/services",
-                "guide/enums/shipment-status",
-                "guide/enums/address-verification-status"
+                "guide/enums/shipment-status"
             ]
         }
     ],

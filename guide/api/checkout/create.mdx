@@ -6,18 +6,18 @@ title: 'Create Checkout Session'
 
 This endpoint can be used to create a checkout session for a list of shipments.
 
-A maximum of 10 shipments can be included in a single checkout session.
-
 Endpoint: `/api/v1/checkout`
 
 Method: `GET`
 
+<Note>
+    A maximum of 10 shipments can be included in a single checkout session.
+</Note>
+
 ### Request
 
 <ResponseField name="shipments" type="array" required>
-    An array of shipment IDs to be included in the checkout session.
-
-    A maximum of `10` shipments can be included in a single checkout session.
+    An array of up to `10` shipment IDs to be included in the checkout session.
 
     <Expandable title="shipments" defaultOpen="true">
         <ResponseField name="id" type="integer" required>
@@ -29,23 +29,23 @@ Method: `GET`
 ### Response (200)
 
 <ResponseField name="shipments" type="array" required>
-    An array of integers showing the cost of each shipment included in the checkout session.
+    An array of integers showing the price of each shipment included in the checkout session.
 
-    Each shipment ID is mapped to its cost. For example, `125: 4500` means that a shipment with ID `125` has a cost of `4500`.
+    Each shipment ID is mapped to its price. For example, `125: 4500` means that a shipment with ID `125` has a price of `4500`.
 
-    Costs are returned in the lowest denomination of the currency. For example, `4500` would represent `4500` cents (`$45.00`) in USD.
+    Prices are displayed in U.S. cents. For example, a price of `4500` is equal to `4500` cents (`$45.00` U.S. dollars).
 </ResponseField>
 
-<ResponseField name="shipments" type="integer" required>
-    The total cost of all shipments included in the checkout session.
+<ResponseField name="total" type="integer" required>
+    The total price of all shipments included in the checkout session.
 
-    The total cost is returned in the lowest denomination of the currency. For example, `17500` would represent `17500` cents (`$175.00`) in USD.
+    The total is displayed in U.S. cents. For example, a total of `17500` is equal to `17500` cents (`$175.00` U.S. dollars).
 </ResponseField>
 
 ### Response (500)
 
 <ResponseField name="status" type="integer" required>
-    The internal status code of the error.
+    A [Checkout Session Status](/guide/enums/checkout-session-status) enum representing the status of the checkout session.
 </ResponseField>
 
 <ResponseField name="message" type="string" required>

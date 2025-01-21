@@ -1,0 +1,21 @@
+---
+title: 'Checkout Session Status'
+description: ''
+---
+
+### Overview
+
+The following enum values represent the checkout session status that can be returned by the ArtPort API:
+
+| ID | Status       | Description                                                                 |
+|----|--------------|-----------------------------------------------------------------------------|
+| 0  | Rate Limited | ArtPort has hit the rate limit of the external shipment rate lookup system. |
+| 1  | Failed   | ArtPort was unable to fetch carrier rates from the external system. Try again.                            |
+
+<Note>
+    ArtPort makes use of external services to determine shipment rates.
+
+    A `0 (Rate Limited)` status does not indicate that your request to ArtPort was rate limited, but that ArtPort's request to the external service was rate limited.
+
+    Unfortunately, ArtPort cannot provide more information about this rate limiting. Therefore, it's recommended to use a backoff strategy and retry the request after a short delay.
+</Note>
