@@ -7,15 +7,19 @@ title: 'Address'
 </ResponseField>
 
 <ResponseField name="name" type="string" required>
-    The name of the address. For example, "John Smith" or "Acme Products".
+    For example, "John Smith" or "Acme Products".
 </ResponseField>
 
 <ResponseField name="email" type="string" required>
-    The contact email for the address.
+    The contact email address.
+
+    Carriers may send one or more shipment tracking notifications to this email address.
 </ResponseField>
 
 <ResponseField name="phone" type="string" required>
-    The contact number for the address formatted using the [E.164 standard](/guide/concepts/formatting#phone-numbers).
+    The contact phone number.
+
+    This must be formatted using the [E.164 standard](/guide/concepts/formatting#phone-numbers).
 </ResponseField>
 
 <ResponseField name="line_1" type="string" required>
@@ -27,19 +31,19 @@ title: 'Address'
 </ResponseField>
 
 <ResponseField name="city" type="string" required>
-    The city of the address.
+    The address' town or city.
 </ResponseField>
 
 <ResponseField name="region" type="string" required>
-    The region of the address.
+    The address' state, province, or region.
 </ResponseField>
 
 <ResponseField name="post_code" type="string" required>
-    The post code of the address.
+    The address' post code.
 </ResponseField>
 
 <ResponseField name="country" type="integer" required>
-    The address' country represented by a [Country](/guide/enums/countries) enum.
+    A [Country](/guide/enums/countries) enum representing the address' country.
 </ResponseField>
 
 <ResponseField name="created_at" type="string" required>

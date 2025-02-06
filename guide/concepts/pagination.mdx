@@ -28,7 +28,7 @@ By default, paginated endpoints will return **20 items per page**. However, this
 ```
 
 <Info>
-    If a `limit` query parameter is passed, it must be an integer between 1 and 50.
+    If a `limit` query parameter is passed, then it must be an integer between `1` and `50`.
 </Info>
 
 #### Paginated Response Structure
@@ -81,15 +81,15 @@ Paginated responses use the following structure:
             The URL for the first page.
         </ResponseField>
 
-        <ResponseField name="links.last" type="null">
+        <ResponseField name="links.last" type="null" required>
             The URL for the last page. This will always be `null`.
         </ResponseField>
 
-        <ResponseField name="links.prev" type="string">
+        <ResponseField name="links.prev" type="string" required>
             The URL for the previous page. This will be `null` if the current page is the first page.
         </ResponseField>
 
-        <ResponseField name="links.next" type="string">
+        <ResponseField name="links.next" type="string" required>
             The URL for the next page. This will be `null` if the current page is the last page.
         </ResponseField>
     </Expandable>
@@ -104,7 +104,7 @@ Paginated responses use the following structure:
         </ResponseField>
 
         <ResponseField name="meta.from" type="number" required>
-            The starting index of the items on the current page. For example, if the page size is 20, and the second page has been returned, this will value will be 21.
+            The starting index of the items on the current page. For example, if the page size is `20`, and the second page has been returned, this will be `21`.
         </ResponseField>
 
         <ResponseField name="meta.path" type="string" required>
@@ -116,7 +116,7 @@ Paginated responses use the following structure:
         </ResponseField>
 
         <ResponseField name="meta.to" type="number" required>
-            The ending index of the items on the current page. For example, if the page size is 20, and the second page has been returned, this will value will be 40.
+            The ending index of the items on the current page. For example, if the page size is `20`, and the second page has been returned, this will be `40`.
         </ResponseField>
     </Expandable>
 </ResponseField>

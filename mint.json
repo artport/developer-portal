@@ -31,16 +31,9 @@
             "pages" : [
                 "guide/concepts/requests",
                 "guide/concepts/responses",
-                "guide/concepts/testing",
                 "guide/concepts/rate-limiting",
                 "guide/concepts/pagination",
                 "guide/concepts/formatting"
-            ]
-        },
-        {
-            "group" : "Libraries",
-            "pages" : [
-                "guide/libraries/introduction"
             ]
         },
         {

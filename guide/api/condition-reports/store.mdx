@@ -36,7 +36,7 @@ In order to submit `Set 2`, the [shipment's status](/guide/enums/shipment-status
 
 ### Request
 
-Since the request requires that photos (binary files) are included, you will need to ensure that the request is sent as `multipart/form-data`.
+Since the request requires that photos (binary files) are included, you will need to ensure that the request is sent using `multipart/form-data`.
 
 <ResponseField name="box" type="array" required>
     An array of photos that document the condition of the shipment's box.
@@ -133,9 +133,11 @@ Since the request requires that photos (binary files) are included, you will nee
     ```
 </RequestExample>
 
-### Response (201)
+### Response
 
-This response will be returned if the condition report is successfully stored.
+If the condition report is successfully stored, the API will return a `201 Created` status code.
+
+The response will not contain any content.
 
 <ResponseExample>
     ```text 201

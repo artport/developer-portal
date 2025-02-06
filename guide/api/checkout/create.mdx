@@ -14,6 +14,14 @@ Method: `GET`
     A maximum of 10 shipments can be included in a single checkout session.
 </Note>
 
+<Warning>
+    It is critical that you [verify the fulfillment and destination addresses](/guide/api/addresses/verify) for each shipment.
+
+    Failure to verify the addresses may result in loss or delayed shipments.
+
+    You may also be **charged** should address correction be necessary by the carrier.
+</Warning>
+
 ### Request
 
 <ResponseField name="shipments" type="array" required>
@@ -27,6 +35,10 @@ Method: `GET`
 </ResponseField>
 
 ### Response (200)
+
+If the checkout session was successfully created, the API will return a `200 OK` status code.
+
+The response will contain the following content:
 
 <ResponseField name="shipments" type="array" required>
     An array of integers showing the price of each shipment included in the checkout session.
@@ -43,6 +55,10 @@ Method: `GET`
 </ResponseField>
 
 ### Response (500)
+
+If the checkout session was not successfully created, the API will return a `500 Server Error` status code.
+
+The response will contain the following content:
 
 <ResponseField name="status" type="integer" required>
     A [Checkout Session Status](/guide/enums/checkout-session-status) enum representing the status of the checkout session.

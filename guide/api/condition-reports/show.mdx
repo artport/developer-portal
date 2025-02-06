@@ -18,22 +18,26 @@ Method: `GET`
 
 ### Response (200)
 
-This response will be returned if the shipment has a condition report.
+If the condition report is successfully retrieved, the API will return a `200 OK` status code.
+
+The response will contain the following content:
 
 <ResponseField name="images" type="string" required>
     A URL to a ZIP file containing the condition report images.
 
-    Note: The URL is a temporary, signed URL which will expire 1 week after being generated.
+    <Note>The URL is a temporary, signed URL which will expire 1 week after being generated.</Note>
 </ResponseField>
 
 ### Response (403)
 
-This response will be returned if the shipment does not have a condition report.
+If the condition report was not successfully retrieved (because it does not exist), the API will return a `403 Forbidden` status code.
+
+The response will not contain any content.
 
 <ResponseExample>
     ```json 200
     {
-        "images": "https://artport.co/temporary-url-to-zip-file"
+        "images": "https://app.artport.co/temporary-url-to-zip-file"
     }
     ```
 </ResponseExample>

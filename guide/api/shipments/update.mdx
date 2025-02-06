@@ -13,9 +13,11 @@ Endpoint: `/api/v1/shipments/{shipment_id}`
 Method: `PATCH`
 
 <Warning>
-    It's advised you use the [Verify Address](/guide/api/addresses/verify) endpoint to ensure that the fulfillment address and destination address are valid before creating the shipment.
+    It is critical that you [verify the fulfillment and destination addresses](/guide/api/addresses/verify) before using them.
 
-    Failure to verify the addresses may result in the shipment being lost, delayed, or extra charges being applied.
+    Failure to verify the addresses may result in loss or delayed shipments.
+
+    You may also be **charged** should address correction be necessary by the carrier.
 </Warning>
 
 ### URL Parameters
@@ -25,12 +27,12 @@ Method: `PATCH`
 ### Request
 
 <Note>
-    When updating a shipment, you can use either of the following two approaches to specify the fulfillment and destination addresses:
+    When creating a shipment, you can use either of the following two approaches to specify the fulfillment and destination addresses:
 
-    - Using the `fulfillment_address_id` and `destination_address_id` fields to reference existing addresses that have already been stored in ArtPort.
-    - Providing the address details directly in the `fulfillment_address` and `destination_address` fields.
+    - Use the `fulfillment_address_id` and `destination_address_id` fields to reference existing addresses that have already been stored on ArtPort.
+    - Provide the address details directly in the `fulfillment_address` and `destination_address` fields.
 
-    Please note, you can use a combination of both approaches. For example, you can provide the `fulfillment_address_id` and `destination_address` fields, or vice versa.
+    You can also combine these approaches. For example, by using a `fulfillment_address_id` and a `destination_address`, or vice versa.
 
     For examples of how to use these fields, see the request examples on this page.
 </Note>
@@ -78,7 +80,7 @@ Method: `PATCH`
 </ResponseField>
 
 <ResponseField name="service" type="integer" required>
-    A [Service](/guide/enums/service) enum representing the service to be used for the shipment.
+    A [Service](/guide/enums/services) enum representing the service to be used for the shipment.
 </ResponseField>
 
 <ResponseField name="fulfillment_address_id" type="integer">
@@ -87,14 +89,14 @@ Method: `PATCH`
     <Note>This field is required if the `fulfillment_address` field is not provided.</Note>
 </ResponseField>
 
-<ResponseField name="fulfillment_address" type="array" required>
+<ResponseField name="fulfillment_address" type="array">
     An object containing the fulfillment address details.
 
     <Note>This field is required if the `fulfillment_address_id` field is not provided.</Note>
 
     <Expandable title="fulfillment_address" defaultOpen="true">
         <ResponseField name="name" type="string" required>
-            The name of the fulfillment address. For example, "John Smith" or "Acme Products".
+            For example, "John Smith" or "Acme Products".
 
             Minimum character length: `2`
 
@@ -102,7 +104,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="email" type="string" required>
-            The contact email for the fulfillment address.
+            The contact email address.
 
             Carriers may send one or more shipment tracking notifications to this email address.
 
@@ -112,9 +114,9 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="phone" type="string" required>
-            The contact number for the fulfillment address.
+            The contact phone number.
 
-            This must be formatted using the [E.164 standard](http://artport.test/support/articles/formatting-telephone-numbers).
+            This must be formatted using the [E.164 standard](/guide/concepts/formatting#phone-numbers).
 
             Minimum character length: `7`
 
@@ -122,7 +124,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="line_1" type="string" required>
-            Line 1 of the fulfillment address.
+            Line 1 of the address.
 
             Minimum character length: `2`
 
@@ -130,7 +132,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="line_2" type="string">
-            Line 2 of the fulfillment address.
+            Line 2 of the address.
 
             Minimum character length: `2`
 
@@ -138,7 +140,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="city" type="string" required>
-            The city of the fulfillment address.
+            The address' town or city.
 
             Minimum character length: `2`
 
@@ -146,7 +148,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="region" type="string" required>
-            The region of the fulfillment address.
+            The address' state, province, or region.
 
             Minimum character length: `2`
 
@@ -154,7 +156,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="post_code" type="string" required>
-            The post code of the fulfillment address.
+            The address' post code.
 
             Minimum character length: `2`
 
@@ -162,7 +164,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="country" type="integer" required>
-            A [Country](/guide/enums/countries) enum representing the fulfillment address' country.
+            A [Country](/guide/enums/countries) enum representing the address' country.
         </ResponseField>
     </Expandable>
 </ResponseField>
@@ -173,14 +175,14 @@ Method: `PATCH`
     <Note>This field is required if the `destination_address` field is not provided.</Note>
 </ResponseField>
 
-<ResponseField name="destination_address" type="array" required>
+<ResponseField name="destination_address" type="array">
     An object containing the destination address details.
 
     <Note>This field is required if the `destination_address_id` field is not provided.</Note>
 
     <Expandable title="destination_address" defaultOpen="true">
         <ResponseField name="name" type="string" required>
-            The name of the destination address. For example, "John Smith" or "Acme Products".
+            For example, "John Smith" or "Acme Products".
 
             Minimum character length: `2`
 
@@ -188,7 +190,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="email" type="string" required>
-            The contact email for the address.
+            The contact email address.
 
             Carriers may send one or more shipment tracking notifications to this email address.
 
@@ -198,7 +200,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="phone" type="string" required>
-            The contact number for the address.
+            The contact phone number.
 
             This must be formatted using the [E.164 standard](/guide/concepts/formatting#phone-numbers).
 
@@ -208,7 +210,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="line_1" type="string" required>
-            Line 1 of the destination address.
+            Line 1 of the address.
 
             Minimum character length: `2`
 
@@ -216,7 +218,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="line_2" type="string">
-            Line 2 of the destination address.
+            Line 2 of the address.
 
             Minimum character length: `2`
 
@@ -224,7 +226,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="city" type="string" required>
-            The city of the destination address.
+            The address' town or city.
 
             Minimum character length: `2`
 
@@ -232,7 +234,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="region" type="string" required>
-            The region of the destination address.
+            The address' state, province, or region.
 
             Minimum character length: `2`
 
@@ -240,7 +242,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="post_code" type="string" required>
-            The post code of the destination address.
+            The address' post code.
 
             Minimum character length: `2`
 
@@ -248,7 +250,7 @@ Method: `PATCH`
         </ResponseField>
 
         <ResponseField name="country" type="integer" required>
-            A [Country](/guide/enums/countries) enum representing the destination address' country.
+            A [Country](/guide/enums/countries) enum representing the address' country.
         </ResponseField>
     </Expandable>
 </ResponseField>
@@ -256,6 +258,8 @@ Method: `PATCH`
 ### Response
 
 If the shipment is successfully updated, the API will return a `204 No Content` status code.
+
+The response will not contain any content.
 
 <RequestExample>
     ```json Request (with address IDs)
