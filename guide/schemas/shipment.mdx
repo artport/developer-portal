@@ -14,10 +14,6 @@ title: 'Shipment'
     The value of the artwork in USD $.
 </ResponseField>
 
-<ResponseField name="can_be_purchased" type="boolean" required>
-    Whether the shipment can be purchased. This will always be `false` unless the shipment's status is currently `Draft` and all required data has been provided.
-</ResponseField>
-
 <ResponseField name="status" type="integer" required>
     A [Shipment Status](/guide/enums/shipment-status) enum representing the status of the shipment.
 </ResponseField>
@@ -64,7 +60,6 @@ title: 'Shipment'
         "id": 1,
         "title": "Secured local capability",
         "value": 7431,
-        "can_be_purchased": false,
         "status": 2,
         "box": 2,
         "length": 37,
