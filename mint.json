@@ -88,6 +88,7 @@
             "pages": [
                 "guide/enums/address-verification-status",
                 "guide/enums/box-types",
+                "guide/enums/carriers",
                 "guide/enums/checkout-session-status",
                 "guide/enums/countries",
                 "guide/enums/services",

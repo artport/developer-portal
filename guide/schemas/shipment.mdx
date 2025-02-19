@@ -46,6 +46,34 @@ title: 'Shipment'
     An [Address](/guide/schemas/address) object which represents the destination address.
 </ResponseField>
 
+<ResponseField name="price" type="integer">
+    The total price in U.S. Dollars to send the artwork.
+</ResponseField>
+
+<ResponseField name="journey_1_carrier" type="integer">
+    A [Carrier](/guide/enums/service) enum representing the provider handling the first journey of the shipment (sending empty box to fulfillment address).
+</ResponseField>
+
+<ResponseField name="journey_1_tracking_number" type="string">
+    The tracking number for the first journey of the shipment.
+</ResponseField>
+
+<ResponseField name="journey_1_tracking_page_url" type="string">
+    The URL to the tracking page for the first journey of the shipment.
+</ResponseField>
+
+<ResponseField name="journey_2_carrier" type="integer">
+    A [Carrier](/guide/enums/service) enum representing the provider handling the second journey of the shipment (sending packed box to destination address).
+</ResponseField>
+
+<ResponseField name="journey_2_tracking_number" type="string">
+    The tracking number for the second journey of the shipment.
+</ResponseField>
+
+<ResponseField name="journey_2_tracking_page_url" type="string">
+    The URL to the tracking page for the second journey of the shipment.
+</ResponseField>
+
 <ResponseField name="created_at" type="string" required>
     Timestamp of when the shipment was created.
 </ResponseField>
@@ -94,6 +122,13 @@ title: 'Shipment'
             "created_at": "2024-12-09 15:39:37",
             "updated_at": "2024-12-09 15:39:37"
         },
+        "price": 245,
+        "journey_1_carrier": 2,
+        "journey_1_tracking_number": "AX56",
+        "journey_1_tracking_page_url": "https://carrier2.com/track/AX56",
+        "journey_2_carrier": 3,
+        "journey_2_tracking_number": "JR87",
+        "journey_2_tracking_page_url": "https://carrier3.com/track/JR87",
         "created_at": "2024-12-09 15:39:37",
         "updated_at": "2024-12-09 15:39:37"
     },
