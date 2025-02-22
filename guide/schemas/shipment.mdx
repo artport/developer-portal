@@ -26,12 +26,12 @@ title: 'Shipment'
     The length of the piece in inches.
 </ResponseField>
 
-<ResponseField name="width" type="integer" required>
-    The width of the piece in inches.
-</ResponseField>
-
 <ResponseField name="height" type="integer" required>
     The height of the piece in inches.
+</ResponseField>
+
+<ResponseField name="depth" type="integer" required>
+    The depth of the piece in inches.
 </ResponseField>
 
 <ResponseField name="service" type="integer" required>
@@ -91,8 +91,8 @@ title: 'Shipment'
         "status": 2,
         "box": 2,
         "length": 37,
-        "width": 21,
-        "height": 1,
+        "height": 21,
+        "depth": 1,
         "service": 1,
         "fulfillment_address": {
             "id": 2,

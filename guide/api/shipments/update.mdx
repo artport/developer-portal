@@ -63,20 +63,20 @@ Method: `PATCH`
     Maximum length: `44`
 </ResponseField>
 
-<ResponseField name="width" type="integer" required>
-    The width of the piece in inches.
-
-    Minimum width: `13`
-
-    Maximum width: `34`
-</ResponseField>
-
 <ResponseField name="height" type="integer" required>
     The height of the piece in inches.
 
-    Minimum height: `1`
+    Minimum height: `13`
 
-    Maximum height: `4`
+    Maximum height: `34`
+</ResponseField>
+
+<ResponseField name="depth" type="integer" required>
+    The depth of the piece in inches.
+
+    Minimum depth: `1`
+
+    Maximum depth: `4`
 </ResponseField>
 
 <ResponseField name="service" type="integer" required>
@@ -267,8 +267,8 @@ The response will not contain any content.
         "title": "Test Shipment",
         "value": 1000,
         "length": 17,
-        "width": 13,
-        "height": 1,
+        "height": 13,
+        "depth": 1,
         "service": 1,
         "fulfillment_address_id": 123,
         "destination_address_id": 456
@@ -280,8 +280,8 @@ The response will not contain any content.
         "title": "Test Shipment",
         "value": 1000,
         "length": 17,
-        "width": 13,
-        "height": 1,
+        "height": 13,
+        "depth": 1,
         "service": 1,
         "fulfillment_address": {
             "name": "Schaefer, Nolan and Wehner",
@@ -313,8 +313,8 @@ The response will not contain any content.
         "title": "Test Shipment",
         "value": 1000,
         "length": 17,
-        "width": 13,
-        "height": 1,
+        "height": 13,
+        "depth": 1,
         "service": 1,
         "fulfillment_address": {
             "name": "Schaefer, Nolan and Wehner",
