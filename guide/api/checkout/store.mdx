@@ -44,6 +44,10 @@ If the checkout session is successfully stored, the API will return a `204 No Co
 
 The response will not contain any content.
 
+### Response (403)
+
+If the organization does not have a valid payment method to charge, then the API will return a `403 Forbidden` status code.
+
 ### Response (402)
 
 If the checkout session was not successfully stored because the payment provider declined the organization's card, then the API will return a `402 Payment Required` status code.
@@ -95,6 +99,10 @@ The response will contain the following content:
 <ResponseExample>
     ```text 204
     No Content
+    ```
+
+    ```json 403
+    "You are not able to do this"
     ```
 
     ```json 402
