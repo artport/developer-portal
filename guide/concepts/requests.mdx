@@ -11,6 +11,10 @@ ArtPort authenticates your API requests using your organization's API token, whi
     Requests without a token will return a `401 Unauthorized` response.
 </Warning>
 
+<Warning>
+    In order to use the API, your organization requires a subscription. If you do not have a subscription, then all requests will return a `402 Payment Needed` response.
+</Warning>
+
 ### Authorization
 
 To authenticate, supply your API token in the request's header. You should configure the header so it uses `bearer` authentication e.g.
